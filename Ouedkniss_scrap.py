@@ -41,6 +41,7 @@ for page in range(1, 20):
     resp = requests.post(url,data=json.dumps(payload),headers=headers).json()
     announcements_data = resp['data']['search']['announcements']['data']
     
+    
     # Extract relevant information from each announcement
     for announcement in announcements_data:
         cities_data = []
@@ -68,6 +69,7 @@ for page in range(1, 20):
 
         announcement_info = {
             'title': announcement['title'],
+            'date published': announcement['createdAt'],
             'description': announcement['description'],
             'cities': cities_data,
             'store': store_name,
