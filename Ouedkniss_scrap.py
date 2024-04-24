@@ -9,7 +9,6 @@ url = 'https://api.ouedkniss.com/graphql'
 all_announcements = []
 
 
-
 # Function to fetch data (all images of a listing if found) from a given id of a listing
 def fetch_medias_urls(id):
     try:
@@ -106,19 +105,7 @@ def get_last_page(page):
         resp = requests.post(url,data=json.dumps(payload),headers=headers).json()
         last_page = resp['data']['search']['announcements']['paginatorInfo']['lastPage']  
         return last_page
-            
-
-
-# Function to save all the announcements to a JSON file
-def save_data():
-    for announcement in all_announcements:
-        if '_id' in announcement:
-            del announcement['_id']
-
-    with open("ouedkniss_immobilier.json", 'w', encoding= 'utf-8') as json_file:
-        json.dump(all_announcements, json_file,ensure_ascii=False, indent=4)
-        
-        
+                    
 
 # Function that stores the announcements in the data base
 def save_to_database(records):
@@ -235,17 +222,16 @@ def main():
                     'Surface': surface,
                 }
                 all_announcements.append(announcement_info)
-                save_data()
                 
         
         save_to_database(all_announcements)
+        
         
     except Exception as e:
         print("An error occured: ", str(e))
     
     finally:
         save_to_database(all_announcements)
-            
                         
               
 if __name__ == "__main__":
