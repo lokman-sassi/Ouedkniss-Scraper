@@ -232,6 +232,7 @@ def main():
     
     finally:
         save_to_database(all_announcements)
+        print("Scraped items: ", all_announcements)
                         
               
 if __name__ == "__main__":
