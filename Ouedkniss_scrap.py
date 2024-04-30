@@ -196,11 +196,14 @@ def main():
                 # Convert the updated timestamp back to the string format
                 Date = parsed_time.strftime('%Y-%m-%dT%H:%M:%S') + ".000Z"
                 
+                # Removing character \n from description
+                desc = announcement['description']
+                
                 
                 print("Title:", announcement['title'])
                 print("Price:", price)
                 print("Location:", location)
-                print("Description:", announcement['description'])
+                print("Description:", desc.replace('\n', ''))
                 print("Images:", images)
                 print("Source:", source)
                 print("Published Date:", Date)
@@ -213,7 +216,7 @@ def main():
                     'Title': announcement['title'],
                     'Price': price,
                     'Location': location,
-                    'Description': announcement['description'],
+                    'Description': desc.replace('\n', ''),
                     'Images': images,
                     'Source': source,
                     'Published Date': Date,
@@ -232,7 +235,6 @@ def main():
     
     finally:
         save_to_database(all_announcements)
-        print("Scraped items: ", all_announcements)
                         
               
 if __name__ == "__main__":
