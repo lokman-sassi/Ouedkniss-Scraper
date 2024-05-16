@@ -197,13 +197,19 @@ def main():
                 Date = parsed_time.strftime('%Y-%m-%dT%H:%M:%S') + ".000Z"
                 
                 # Removing character \n from description
-                desc = announcement['description']
+                #desc = announcement['description']
+                
+                if announcement['description']:
+                    desc = announcement['description']
+                    formatted_desc = desc.replace('\n', '')
+                else:
+                    formatted_desc = "No description available"
                 
                 
                 print("Title:", announcement['title'])
                 print("Price:", price)
                 print("Location:", location)
-                print("Description:", desc.replace('\n', ''))
+                print("Description:", formatted_desc)
                 print("Images:", images)
                 print("Source:", source)
                 print("Published Date:", Date)
@@ -216,7 +222,7 @@ def main():
                     'Title': announcement['title'],
                     'Price': price,
                     'Location': location,
-                    'Description': desc.replace('\n', ''),
+                    'Description': formatted_desc,
                     'Images': images,
                     'Source': source,
                     'Published Date': Date,
