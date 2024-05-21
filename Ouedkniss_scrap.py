@@ -231,16 +231,17 @@ def main():
                     'Surface': surface,
                 }
                 all_announcements.append(announcement_info)
+                save_to_database([announcement_info])
                 
         
-        save_to_database(all_announcements)
+        #save_to_database(all_announcements)
         
         
     except Exception as e:
         print("An error occured: ", str(e))
     
-    finally:
-        save_to_database(all_announcements)
+    #finally:
+        #save_to_database(all_announcements)
                         
               
 if __name__ == "__main__":
