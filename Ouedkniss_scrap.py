@@ -212,7 +212,7 @@ def main():
                 print("Description:", formatted_desc)
                 print("Images:", images)
                 print("Source:", source)
-                print("Published Date:", Date)
+                print("Date:", Date)
                 print("Link:", f'https://www.ouedkniss.com/{announcement["slug"]}-d{announcement["id"]}')
                 print("Category:", announcement['category']['slug'])
                 print("Surface:", surface)
@@ -225,7 +225,7 @@ def main():
                     'Description': formatted_desc,
                     'Images': images,
                     'Source': source,
-                    'Published Date': Date,
+                    'Date': Date,
                     'Link': f'https://www.ouedkniss.com/{announcement["slug"]}-d{announcement["id"]}',
                     'Category': announcement['category']['slug'],
                     'Surface': surface,
